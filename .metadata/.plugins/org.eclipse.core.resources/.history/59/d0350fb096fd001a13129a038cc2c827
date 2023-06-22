@@ -1,0 +1,57 @@
+package com.mahesh.hibernate;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+
+public class Test {
+
+	public static void main(String[] args) {
+		
+		AnnotationConfiguration cfg = new AnnotationConfiguration();
+//		Configuration cfg = new Configuration();
+		cfg.configure("hibernate.cfg.xml");
+		SessionFactory sf = cfg.buildSessionFactory();
+		Session session = sf.openSession();
+		Transaction transaction = session.beginTransaction();
+		
+		Department department = new Department();
+		department.setDeptName("computer science");
+		
+		Employee employee1 = new Employee();
+		employee1.setEmpName("Mahesh");
+		employee1.setEmpAddress("mahabaleshwar");
+		employee1.setDepartment(department);
+		
+		
+		Employee employee2 = new Employee();
+		employee2.setEmpName("Rohan");
+		employee2.setEmpAddress("pune");
+		employee2.setDepartment(department);
+		
+		
+		Employee employee3 = new Employee();
+		employee3.setEmpName("Ganesh");
+		employee3.setEmpAddress("satara");
+		employee3.setDepartment(department);
+		
+		
+		Employee employee4 = new Employee();
+		employee4.setEmpName("Ram");
+		employee4.setEmpAddress("mumbai");
+		employee4.setDepartment(department);
+		
+		session.save(employee1);
+		session.save(employee2);
+		session.save(employee3);
+		session.save(employee4);
+		
+		transaction.commit();
+		session.close();
+		System.out.println("many to one relationship done successfully");
+		
+	}
+
+}

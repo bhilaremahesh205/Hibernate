@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.mahesh.hibernate.Department" table="department12">
+<id name="deptId" column="dept_id">
+<generator class="increment"></generator>
+</id>
+<property name="deptName"></property>
+</class>
+
+
+
+<class name="com.mahesh.hibernate.Employee" table="employee12">
+<id name="empId">
+<generator class="increment"></generator>
+</id>
+<property name="empName"></property>
+<property name="empAddress"></property>
+<many-to-one name="department" column="dept_id" cascade="all"></many-to-one>
+</class>
+</hibernate-mapping>

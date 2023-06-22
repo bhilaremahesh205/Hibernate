@@ -1,0 +1,38 @@
+package com.mahesh.hibernate;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+//import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Configuration cfg = new Configuration();
+		cfg.configure("hibernate.cfg.xml");
+		SessionFactory sf = cfg.buildSessionFactory();
+		Session session = sf.openSession();
+		Transaction transaction = session.beginTransaction();
+		
+		Employee employee = new Employee();
+		employee.setEmpName("Mahesh");
+		employee.setEmpSalary("45000");
+		employee.setEmpAddress("Mahabaleshwar");
+		
+		Employee employee2 = new Employee();
+		employee2.setEmpName("manish");
+		employee2.setEmpSalary("4000");
+		employee2.setEmpAddress("satara");
+	
+		session.save(employee);
+		session.save(employee2);
+		transaction.commit();
+		session.close();
+		System.out.println("Inserted successfully");
+		
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.mahesh.hibernate;
+
+public class Employee {
+
+}
